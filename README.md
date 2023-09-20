@@ -203,3 +203,37 @@ vscode:
     - hashicorp.terraform
     - mhutchie.git-graph
 ```
+
+## Terraform Basics
+
+### Terraform Registry
+
+Terraform sources their providers and modules from the Terraform registry which are located at [registry.terraform.io](https://registry.terraform.io/)
+
+- Provider is an interface to APIs that will allow you to create resource
+- Modules are a way to generalize a chuck of repeatable code in order to reuse the code it for multiple projects.
+
+### Terraform Console
+
+To outpull all available terraform commands run the command `terraform` in terminal
+
+### Terraform Init
+
+To start any terraform project we need to run `terraform init` in the terminal. This allows terraform to download all necessary providers and modules and initialize the project in the directory
+
+### Terraform Plan
+
+When `terraform plan` is executed as a command in terminal terraform will print out what changes will occur on our infrastructure.
+
+### Terraform Apply
+
+When we run `terraform apply` in terminal terraform will apply the previous plan if we already have it and will actually make the changes to our infrastructre. 
+Terraform apply have to be approved by the user and that can be done either by manual user intervention or we can tell terraform to auto approve by running apply with -auto-approve option eg. `terraform apply -auto-approve`
+
+### Terraform Lock Files
+
+`.terraform.lock.hcl` is a file where terraform stores all necessary information about providers and modules used by the project. This file should be commited to a version control system.
+
+### Terraform State Files
+
+`.terraform.tfstate` is a file where terraform saves the actual state of our infrastructure. **This file should never be edited manually nor commited to a version control system. This file can contain sensitive data**
