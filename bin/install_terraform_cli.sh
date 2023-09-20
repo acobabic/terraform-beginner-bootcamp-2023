@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#Change dir to /workspace
+cd /workspace
+
 #Install software prerequisites
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
 
@@ -19,3 +22,6 @@ sudo tee /etc/apt/sources.list.d/hashicorp.list
 
 #Install Terraform CLI 
 sudo apt-get update && sudo apt-get install -y terraform
+
+#Change dir back to PROJECT_ROOT
+cd $PROJECT_ROOT
