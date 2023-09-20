@@ -152,3 +152,54 @@ gp env HELLO='world'
 All future workspaces launched will set the env vars for all bash terminal opened in thoes workspaces.
 
 You can also set env vars in the `.gitpod.yml` but this can only contain non-sensitive env vars.
+
+### AWS CLI Installation
+
+AWS CLI is installed for the project via the bash script [install_aws_cli.sh](./bin/install_aws_cli.sh)
+
+More information on how to install and use AWS CLI can be found on link bellow: 
+
+[AWS CLI getting started](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+[AWS CLI environment variables](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+We need to create a user on AWS and generate CLI access credentials for that user. 
+After a user on AWS is created we need to configure our gitpod environment to use those user CLI access credentials. 
+
+This is done by setting those credentials as gitpod secrets (global env vars).
+
+
+```sh
+gp env AWS_ACCESS_KEY_ID='aws_user_access_key_id'
+gp env AWS_SECRET_ACCESS_KEY='aws_user_secret_access_key'
+gp env AWS_DEFAULT_REGION='aws_user_default_aws_region'
+```
+
+We can check if our AWS credentials are configured correctly by running the  following AWS CLI command:
+
+```sh
+aws sts get-caller-identity
+```
+
+If it is succesful we should see a json payload return that looks like this:
+
+```json
+{
+    "UserId": "USER_ID",
+    "Account": "ACCOUND_ID",
+    "Arn": "arn:aws:iam::ACCOUND_ID:user/username"
+}
+
+```
+
+### VSCode extensions
+
+I needed a better git graph extension hence I have install **mhutchie.git-graph** by adding it to vscode extensions block in [.gitpod.yml](.gitpod.yml) file.
+
+```yml
+vscode:
+  extensions:
+    - amazonwebservices.aws-toolkit-vscode
+    - hashicorp.terraform
+    - mhutchie.git-graph
+```
