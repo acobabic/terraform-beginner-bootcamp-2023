@@ -230,6 +230,10 @@ When `terraform plan` is executed as a command in terminal terraform will print 
 When we run `terraform apply` in terminal terraform will apply the previous plan if we already have it and will actually make the changes to our infrastructre. 
 Terraform apply have to be approved by the user and that can be done either by manual user intervention or we can tell terraform to auto approve by running apply with -auto-approve option eg. `terraform apply -auto-approve`
 
+### Terraform Destroy
+
+`terraform destroy` command is used to destroy all resources on our infrastructure based on our code and tfstate
+
 ### Terraform Lock Files
 
 `.terraform.lock.hcl` is a file where terraform stores all necessary information about providers and modules used by the project. This file should be commited to a version control system.
@@ -237,3 +241,9 @@ Terraform apply have to be approved by the user and that can be done either by m
 ### Terraform State Files
 
 `.terraform.tfstate` is a file where terraform saves the actual state of our infrastructure. **This file should never be edited manually nor commited to a version control system. This file can contain sensitive data**
+
+## AWS S3 bucket
+
+S3 buckets have a relativly strict naming convention and we need to be aware of it when creating S3 buckets via Terraform.
+
+For more information visit [S3 naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
