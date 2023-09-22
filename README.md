@@ -280,3 +280,13 @@ open /home/gitpod/.terraform.d/credentials.tfrc.json
 ```
 
 - Run `terraform init`
+
+### Automated terraform cloud login
+
+As manually login to terraform cloud on each gitpod startup was a hustle I have made a bash script that automates the proccess.
+
+Script checks if env var TERRAFORM_CLOUD_TOKEN is set in gitpod and if it is script will create `/home/gitpod/.terraform.d/credentials.tfrc.json` file and load our TERRAFORM_CLOUD_TOKEN to credentials.tfrc.json file.
+
+Bash script used to achive this [generate_tfrc_credentials.sh](./bin/generate_tfrc_credentials.sh)
+
+I have also made the script executable and sourced it in [.gitpod.yml](.gitpod.yml) and I added TERRAFORM_CLOUD_TOKEN as global gitpod env var, A.k.a gitpod secret.
