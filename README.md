@@ -290,3 +290,9 @@ Script checks if env var TERRAFORM_CLOUD_TOKEN is set in gitpod and if it is scr
 Bash script used to achive this [generate_tfrc_credentials.sh](./bin/generate_tfrc_credentials.sh)
 
 I have also made the script executable and sourced it in [.gitpod.yml](.gitpod.yml) and I added TERRAFORM_CLOUD_TOKEN as global gitpod env var, A.k.a gitpod secret.
+
+### TF as alias for Terraform
+
+To be quicker on the command line I have set `tf` as an alias for `terraform` command, and I have also enabled terraform autocompletion in bash for both `tf` and `terraform` command.
+
+This is automatically configured on gitpod startup with a scitp [set_tf_alias.sh](./bin/set_tf_alias.sh)
