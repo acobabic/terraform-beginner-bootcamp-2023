@@ -247,3 +247,36 @@ Terraform apply have to be approved by the user and that can be done either by m
 S3 buckets have a relativly strict naming convention and we need to be aware of it when creating S3 buckets via Terraform.
 
 For more information visit [S3 naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
+
+## Terraform Cloud Login
+
+When using Gitpod there is an issue with Gitpod login due to VSCode running in browser and `terrafom login` command wants us to due the login via terminal, which well does not really render properlly in Gitpod.
+
+The workaround is:
+
+- Generate API token in Terraform Cloud
+```
+https://app.terraform.io/app/settings/tokens
+```
+
+- Manually create local credentials.tfrc.json file 
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+- Open a file and add json block to it
+```sh
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR_TERRAFORM_CLOUD_TOKEN"
+    }
+  }
+}
+```
+
+- Run `terraform init`
