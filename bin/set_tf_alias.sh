@@ -6,10 +6,10 @@ grep -q 'alias tf="terraform"' ~/.bash_profile
 if [ $? -ne 0 ]; then
   # If the alias does not exists, appent it
   echo 'alias tf="terraform"' >> ~/.bash_profile
-  echo "Alias added succesfully"
+  echo "Alias tf added succesfully"
 else
   # Inform the user that alias already exists
-  echo "Alias already exists in .bash_profile"
+  echo "Alias tf already exists in .bash_profile"
 fi
 
 # Check is terraform autocompletion enable in the .bash_profile
