@@ -131,7 +131,7 @@ tasks:
 More information on how to configure gitpod workspaces can be found on a link. [Gitpod documentation](https://www.gitpod.io/docs/configure/workspaces/tasks)
 
 
-### Working Env Vars
+### Working with Env Vars
 
 #### env command
 
