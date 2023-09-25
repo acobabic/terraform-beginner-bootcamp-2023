@@ -8,7 +8,7 @@
     + [SheBang consideration](#shebang-consideration)
     + [CHMOD consideration](#chmod-consideration)
   * [Gitpod configuration](#gitpod-configuration)
-  * [Working Env Vars](#working-env-vars)
+  * [Working with Env Vars](#working-with-env-vars)
     + [env command](#env-command)
     + [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
     + [Printing Vars](#printing-vars)
