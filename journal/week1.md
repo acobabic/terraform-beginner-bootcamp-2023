@@ -95,3 +95,54 @@ More information on terraform import and S3 bucket import can be found on links 
 
 If somehow our infrastructure gets modified by ClickOps when a `terraform plan` is runned it will try to fix our infrastructure and move it back to the desired state defined in Terraform code. It will try to fix our configuration drift.
 
+### Fix using Terraform Refresh
+
+Altough this command is deprecated in Terraform it can still be used.
+
+```
+terraform apply -refresh-only -auto-approve`
+```
+
+## Terraform Modules
+
+### Terraform Module Structure
+
+The recommended way is to place modules in a `modules` directory when locally developing modules.
+
+```
+PROJECT_ROOT
+  ├── modules
+      ├── module_name
+          ├── README.md
+          ├── main.tf
+          ├── variables.tf
+          ├── outputs.tf
+```
+
+### Modules Sources
+
+Using the source we can import terraform modules from various places e.g.:
+- locally
+- Github
+- Terraform Registry
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
+
+[Modules Sources](https://developer.hashicorp.com/terraform/language/modules)
+
+### Passing Input Variables
+
+We can pass input variables to terraform modules but the modules has to declare varaibles we are passing in its own varaibles.tf file.
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+  environment = var.environment
+}
+```
