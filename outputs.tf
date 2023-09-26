@@ -1,3 +1,4 @@
 output "website_bucket_name" {
-  value = aws_s3_bucket.website_bucket.bucket
+  description = "Bucket name for our static website hosting"
+  value       = module.terrahouse_aws.website_bucket_name
 }
