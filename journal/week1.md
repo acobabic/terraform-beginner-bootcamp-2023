@@ -146,3 +146,48 @@ module "terrahouse_aws" {
   environment = var.environment
 }
 ```
+
+## ChatGPT for writing Terraform
+
+LLMs such as ChatGPT may not be trained on the latest available informations, hence they can't really be fully realied on for writing Terraform code as they may not be aware of latest Terraform features.
+
+Use them as help but do check the official Terraform documentation for most relevat informations.
+
+## Working with files in Terraform
+
+### Fileexists function
+
+A built in Terraform function to check does file exists e.g.:
+
+```tf
+condition = fileexists(var.index_html_file_path)
+```
+
+[Fileexists Function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+
+### Filemd5 function
+
+`filemd5` is a variant of `md5` that hashes the contents of a given file rather than a literal string.
+
+```tf
+etag = filemd5(var.index_html_file_path)
+```
+
+[FileMD5 Function](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+### Path Variable
+
+In terraform a special variable called `path` enables us to reference local paths:
+
+- path.module
+- path.root
+
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+```tf
+resource "aws_s3_object" "website_index" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${path.root}/public/index.html"
+  etag = filemd5(var.index_html_file_path)
+}
+```
