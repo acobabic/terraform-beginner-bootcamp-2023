@@ -19,10 +19,26 @@ variable "environment" {
 variable "bucket_name" {
   type        = string
   description = "The name of the AWS S3 bucket"
-
   validation {
     condition     = can(regex("^[a-zA-Z0-9.-]+$", var.bucket_name))
     error_message = "Invalid S3 bucket name. It must only contain alphanumeric characters, hyphens, and periods."
   }
 }
 
+variable "index_html_file_path" {
+  type        = string
+  description = "Full path to our Static Website index.html page"
+  validation {
+    condition     = fileexists(var.index_html_file_path)
+    error_message = "The provided value is not a valid file path."
+  }
+}
+
+variable "error_html_file_path" {
+  type        = string
+  description = "Full path to our Static Website error.html page"
+  validation {
+    condition     = fileexists(var.error_html_file_path)
+    error_message = "The provided value is not a valid file path."
+  }
+}
