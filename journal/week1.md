@@ -191,3 +191,80 @@ resource "aws_s3_object" "website_index" {
   etag = filemd5(var.index_html_file_path)
 }
 ```
+## Terraform Locals
+
+A local value assigns a name to an expression, so we can use the name multiple times within a module instead of repeating the expression.
+
+```tf
+locals {
+  service_name = "forum"
+  owner        = "Community Team"
+}
+```
+
+The expressions in local values are not limited to literal constants; they can also reference other values in the module in order to transform or combine them, including variables, resource attributes, or other local values:
+
+```tf
+locals {
+  # Ids for multiple sets of EC2 instances, merged together
+  instance_ids = concat(aws_instance.blue.*.id, aws_instance.green.*.id)
+}
+
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Service = local.service_name
+    Owner   = local.owner
+  }
+}
+```
+
+[Terraform Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+## Terraform Data Sources
+
+Data sources allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration, or modified by functions.
+
+A data source is accessed via a special kind of resource known as a *data resource*, declared using a `data block`:
+
+```tf
+data "aws_ami" "example" {
+  most_recent = true
+
+  owners = ["self"]
+  tags = {
+    Name   = "app-server"
+    Tested = "true"
+  }
+}
+
+```
+
+```tf
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+
+output "caller_arn" {
+  value = data.aws_caller_identity.current.arn
+}
+
+output "caller_user" {
+  value = data.aws_caller_identity.current.user_id
+}
+
+```
+
+[Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+## Woking with JSON
+
+`jsonencode` can be used to create inline json policy in the Terraform HCL.
+
+```tf
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+[jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)

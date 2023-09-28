@@ -1,5 +1,11 @@
 user_uuid   = "5903249e-a836-4213-96da-ec440a435dc3"
 environment = "TerraHouse"
 bucket_name = "x8v7n1k3r2s6p4o9q5m0f1z8y7"
+
+# Gitpod dev vars
 index_html_file_path = "/workspace/terraform-beginner-bootcamp-2023/public/index.html"
 error_html_file_path = "/workspace/terraform-beginner-bootcamp-2023/public/error.html"
+
+# Local dev vars
+#index_html_file_path = "/home/ababic/repos/terraform-beginner-bootcamp-2023/public/index.html"
+#error_html_file_path = "/home/ababic/repos/terraform-beginner-bootcamp-2023/public/error.html"
