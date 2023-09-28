@@ -191,7 +191,10 @@ resource "aws_s3_object" "website_index" {
   etag = filemd5(var.index_html_file_path)
 }
 ```
-## Terraform Locals
+
+## Working with data in Terraform
+
+### Terraform Locals
 
 A local value assigns a name to an expression, so we can use the name multiple times within a module instead of repeating the expression.
 
@@ -221,7 +224,7 @@ locals {
 
 [Terraform Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
 
-## Terraform Data Sources
+### Terraform Data Sources
 
 Data sources allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration, or modified by functions.
 
@@ -259,7 +262,7 @@ output "caller_user" {
 
 [Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
 
-## Woking with JSON
+### Woking with JSON
 
 `jsonencode` can be used to create inline json policy in the Terraform HCL.
 
@@ -268,3 +271,51 @@ output "caller_user" {
 {"hello":"world"}
 ```
 [jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
+
+### Changing the Lifecycle of Resources
+
+Lifecycle is a nested block that can appear within a resource block. The lifecycle block and its contents are meta-arguments, available for all resource blocks regardless of type.
+
+The arguments available within a lifecycle block are: 
+- create_before_destroy
+- prevent_destroy
+- ignore_changes
+- replace_triggered_by.
+
+```tf
+resource "azurerm_resource_group" "example" {
+  # ...
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
+
+[Meta-Arguments Lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+### Terraform Data Resource
+
+The terraform_data implements the standard resource lifecycle, but does not directly take any other actions. You can use the terraform_data resource without requiring or configuring a provider. It is always available through a built-in provider with the source address terraform.io/builtin/terraform.
+
+The terraform_data resource is useful for storing values which need to follow a manage resource lifecycle, and for triggering provisioners when there is no other logical managed resource in which to place them.
+
+```tf
+variable "revision" {
+  default = 1
+}
+
+resource "terraform_data" "replacement" {
+  input = var.revision
+}
+
+# This resource has no convenient attribute which forces replacement,
+# but can now be replaced by any change to the revision variable value.
+resource "example_database" "test" {
+  lifecycle {
+    replace_triggered_by = [terraform_data.replacement]
+  }
+}
+```
+
+[Terraform Data Resource](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
