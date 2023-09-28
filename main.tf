@@ -15,4 +15,5 @@ module "terrahouse_aws" {
   environment          = var.environment
   index_html_file_path = var.index_html_file_path
   error_html_file_path = var.error_html_file_path
+  content_version      = var.content_version
 }
