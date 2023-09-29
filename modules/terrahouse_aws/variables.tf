@@ -43,6 +43,12 @@ variable "error_html_file_path" {
   }
 }
 
+variable "assets_path" {
+  type        = string
+  description = "Full path to our assets folder"
+}
+
+
 variable "content_version" {
   type        = number
   description = "Content version (positive integer starting from 1)"
