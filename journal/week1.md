@@ -428,3 +428,81 @@ aws cloudfront create-invalidation \
   }
 }
 ```
+
+## Terraform for_each
+
+for_each is a meta-argument defined by the Terraform language. It can be used with modules and with every resource type.
+
+The for_each meta-argument accepts a map or a set of strings, and creates an instance for each item in that map or set. Each instance has a distinct infrastructure object associated with it, and each is separately created, updated, or destroyed when the configuration is applied.
+
+Map:
+
+```tf
+resource "azurerm_resource_group" "rg" {
+  for_each = {
+    a_group = "eastus"
+    another_group = "westus2"
+  }
+  name     = each.key
+  location = each.value
+}
+```
+
+Set of strings:
+
+```tf
+resource "aws_iam_user" "the-accounts" {
+  for_each = toset( ["Todd", "James", "Alice", "Dottie"] )
+  name     = each.key
+}
+```
+
+In blocks where for_each is set, an additional each object is available in expressions, so you can modify the configuration of each instance. This object has two attributes:
+
+- each.key — The map key (or set member) corresponding to this instance.
+- each.value — The map value corresponding to this instance. (If a set was provided, this is the same as each.key.)
+
+[Terraform for_each](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
+
+## Terraform fileset
+
+Fileset enumerates a set of regular file names given a path and pattern. The path is automatically removed from the resulting set of file names and any result still containing path separators always returns forward slash (/) as the path separator for cross-system compatibility.
+
+Example:
+
+```tf
+> fileset(path.module, "files/*.txt")
+[
+  "files/hello.txt",
+  "files/world.txt",
+]
+
+> fileset(path.module, "files/{hello,world}.txt")
+[
+  "files/hello.txt",
+  "files/world.txt",
+]
+
+> fileset("${path.module}/files", "*")
+[
+  "hello.txt",
+  "world.txt",
+]
+
+> fileset("${path.module}/files", "**")
+[
+  "hello.txt",
+  "world.txt",
+  "subdirectory/anotherfile.txt",
+]
+```
+
+A common use of fileset is to create one resource instance per matched file, using the for_each meta-argument:
+
+```tf
+resource "example_thing" "example" {
+  for_each = fileset(path.module, "files/*")
+
+  # other configuration using each.value
+}
+```

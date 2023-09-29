@@ -1,21 +1,31 @@
 variable "user_uuid" {
   type = string
+  description = "User UUID tag to associate with resources"
 }
 
 variable "environment" {
   type = string
+  description = "Environment for the resource"
 }
 
 variable "bucket_name" {
   type = string
+  description = "The name of the AWS S3 bucket"
 }
 
 variable "index_html_file_path" {
   type = string
+  description = "Full path to our Static Website index.html page"
 }
 
 variable "error_html_file_path" {
   type = string
+  description = "Full path to our Static Website error.html page"
+}
+
+variable "assets_path" {
+  type        = string
+  description = "Full path to our assets folder"
 }
 
 variable "content_version" {
