@@ -12,3 +12,4 @@ output "s3_distribution_domain_name" {
   description = "Domain name of our CloudFront Distribution used for our statically hosted website"
   value       = module.terrahouse_aws.s3_distribution_domain_name
 }
+
