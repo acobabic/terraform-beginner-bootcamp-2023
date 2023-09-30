@@ -28,17 +28,17 @@ variable "bucket_name" {
 variable "index_html_file_path" {
   type        = string
   description = "Full path to our Static Website index.html page"
-  validation {
+  /*validation {
     condition     = fileexists(var.index_html_file_path)
     error_message = "The provided value is not a valid file path."
-  }
+  } */
 }
 
 variable "error_html_file_path" {
   type        = string
   description = "Full path to our Static Website error.html page"
-  validation {
+  /*validation {
     condition     = fileexists(var.error_html_file_path)
     error_message = "The provided value is not a valid file path."
-  }
+  } */
 }
