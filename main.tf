@@ -3,7 +3,7 @@ terraform {
     organization = "BBA-LEARN"
 
     workspaces {
-      name = "terra-house-1"
+      name = "terraform-cloud"
     }
   }
 }
