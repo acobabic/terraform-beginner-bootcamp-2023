@@ -1,6 +1,7 @@
 output "website_bucket_name" {
   description = "Bucket name for our static website hosting"
   value = aws_s3_bucket.website_bucket.bucket
+  sensitive = true
 }
 
 /*
