@@ -1,10 +1,13 @@
 tasks:
   - name: terraform
+    env:
+      TF_LOG: DEBUG
     before: |
       cd $PROJECT_ROOT
       source ./bin/install_terraform_cli.sh
       source ./bin/generate_tfrc_credentials.sh
       source ./bin/set_tf_alias.sh
+      source ./bin/build_provider.sh
       cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
       terraform init
   - name: sinatra
