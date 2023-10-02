@@ -6,6 +6,7 @@ PLUGIN_NAME="terraform-provider-terratowns_v1.0.0"
 cd ${PROJECT_ROOT}/terraform-provider-terratowns
 cp ${PROJECT_ROOT}/terraformrc /home/gitpod/.terraformrc
 
+
 rm -rf ${HOME}/.terraform.d/plugins
 rm -rf ${PROJECT_ROOT}/.terraform.lock.hcl
 go build -o $PLUGIN_NAME
