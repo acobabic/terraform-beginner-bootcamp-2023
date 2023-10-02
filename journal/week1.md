@@ -1,5 +1,43 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
 
+- [Root Module Structure](#root-module-structure)
+- [Terraform Variables](#terraform-variables)
+  * [Terraform Cloud Variables](#terraform-cloud-variables)
+  * [Loading Terraform Variables](#loading-terraform-variables)
+    + [var flag](#var-flag)
+    + [var-file flag](#var-file-flag)
+    + [terraform.tfvars](#terraformtfvars)
+    + [auto.tfvars](#autotfvars)
+    + [order of terraform variable](#order-of-terraform-variable)
+- [Dealing with configuration drift](#dealing-with-configuration-drift)
+  * [What happens if we lose our state file?](#what-happens-if-we-lose-our-state-file-)
+  * [Fix Missing Resources with Terraform Import](#fix-missing-resources-with-terraform-import)
+  * [Fix Manual Configuration](#fix-manual-configuration)
+  * [Fix using Terraform Refresh](#fix-using-terraform-refresh)
+- [Terraform Modules](#terraform-modules)
+  * [Terraform Module Structure](#terraform-module-structure)
+  * [Modules Sources](#modules-sources)
+  * [Passing Input Variables](#passing-input-variables)
+- [ChatGPT for writing Terraform](#chatgpt-for-writing-terraform)
+- [Working with files in Terraform](#working-with-files-in-terraform)
+  * [Fileexists function](#fileexists-function)
+  * [Filemd5 function](#filemd5-function)
+  * [Path Variable](#path-variable)
+- [Working with data in Terraform](#working-with-data-in-terraform)
+  * [Terraform Locals](#terraform-locals)
+  * [Terraform Data Sources](#terraform-data-sources)
+  * [Woking with JSON](#woking-with-json)
+  * [Changing the Lifecycle of Resources](#changing-the-lifecycle-of-resources)
+  * [Terraform Data Resource](#terraform-data-resource)
+- [Terraform Provisioners](#terraform-provisioners)
+  * [file provisioner](#file-provisioner)
+  * [local-exec](#local-exec)
+  * [remote-exec](#remote-exec)
+    + [HereDoc](#heredoc)
+- [Terraform for_each](#terraform-for-each)
+- [Terraform fileset](#terraform-fileset)
+
+
 ## Root Module Structure
 
 Our root module structure is as follows:
