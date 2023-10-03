@@ -47,3 +47,24 @@ bundle exec ruby server.rb
 ```
 
 All of the code for our server is stored in the `server.rb` file.
+
+## Terraform Custom Provider (terratowns)
+
+Copied [main.go](/terraform-provider-terratowns/main.go) from [Andrew Brown Git Repo](https://github.com/omenking/terraform-beginner-bootcamp-2023) as I'm currently not familiar enough with [goLang](https://go.dev/).
+
+Created a [build_provider.sh](/bin/build_provider.sh) script that actually build the tarratowns custom provider binary and copy it to the terraform expected directory on system (gitpod).
+
+Created [terraformrc](/terraformrc) file that defines paths where terraform should look for local providers (our custom terratown provider)
+
+Enabled DEBUG in terraform output with env var `TF_LOG: DEBUG` by defining it in [.gitpod.yml](/.gitpod.yml) file.
+
+More information on Terraform Providers and how to make them can be found on links bellow:
+
+- [Terraform Providers](https://developer.hashicorp.com/terraform/registry/providers/docs)
+- [Terraform Providers 2](https://developer.hashicorp.com/terraform/language/providers)
+
+### CRUD
+
+Terraform providers utilize CRUD (create read update delete)
+
+[About CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
