@@ -18,11 +18,6 @@ variable "environment" {
   description = "Environment for the resource"
 }
 
-variable "bucket_name" {
-  type        = string
-  description = "The name of the AWS S3 bucket"
-}
-
 variable "index_html_file_path" {
   type        = string
   description = "Full path to our Static Website index.html page"
