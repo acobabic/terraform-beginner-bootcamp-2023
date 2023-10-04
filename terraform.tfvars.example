@@ -1,11 +1,7 @@
-user_uuid   = "5903249e-a836-4213-96da-ec440a435dc3"
+terratowns_endpoint = "https://terratowns.cloud//api"
 environment = "TerraHouse"
 bucket_name = "x8v7n1k3r2s6p4o9q5m0f1z8y7"
 index_html_file_path = "/workspace/terraform-beginner-bootcamp-2023/public/index.html"
 error_html_file_path = "/workspace/terraform-beginner-bootcamp-2023/public/error.html"
 assets_path = "/workspace/terraform-beginner-bootcamp-2023/public/assets"
-content_version = 3
-
-# Local dev vars (used when developing on my local machine)
-#index_html_file_path = "/home/ababic/repos/terraform-beginner-bootcamp-2023/public/index.html"
-#error_html_file_path = "/home/ababic/repos/terraform-beginner-bootcamp-2023/public/error.html"
+content_version = 1

@@ -1,4 +1,4 @@
-/*output "bucket_name" {
+output "bucket_name" {
   description = "Bucket name for our static website hosting"
   value       = module.terrahouse_aws.website_bucket_name
 }
@@ -12,5 +12,3 @@ output "s3_distribution_domain_name" {
   description = "Domain name of our CloudFront Distribution used for our statically hosted website"
   value       = module.terrahouse_aws.s3_distribution_domain_name
 }
-
-*/

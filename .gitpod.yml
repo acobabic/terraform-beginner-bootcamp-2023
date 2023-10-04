@@ -9,6 +9,7 @@ tasks:
       source ./bin/set_tf_alias.sh
       source ./bin/build_provider.sh
       cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
+      cd $PROJECT_ROOT
       terraform init
   - name: sinatra
     before: | 
