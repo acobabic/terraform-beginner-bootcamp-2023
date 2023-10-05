@@ -23,11 +23,11 @@ provider "terratowns" {
 
 
 module "home_half_life_hosting" {
-  source               = "./modules/terrahome_aws"
-  user_uuid            = var.user_uuid
-  environment          = var.environment
-  public_path = var.half_life.public_path
-  content_version      = var.half_life.content_version
+  source          = "./modules/terrahome_aws"
+  user_uuid       = var.user_uuid
+  environment     = var.environment
+  public_path     = var.half_life.public_path
+  content_version = var.half_life.content_version
 }
 
 resource "terratowns_home" "home_half_life" {
@@ -37,16 +37,16 @@ I love Half Life game. It is my first PC game ever and I consider it as my first
 DESCRIPTION
   domain_name     = module.home_half_life_hosting.s3_distribution_domain_name
   town            = "missingo"
-  content_version = 1
+  content_version = var.half_life.content_version
 }
 
-/*
+
 module "home_bl_cevap_hosting" {
-  source               = "./modules/terrahome_aws"
-  user_uuid            = var.user_uuid
-  environment          = var.environment
-  public_path = var.bl_cevap.public_path
-  content_version      = var.bl_cevap.content_version
+  source          = "./modules/terrahome_aws"
+  user_uuid       = var.user_uuid
+  environment     = var.environment
+  public_path     = var.bl_cevap.public_path
+  content_version = var.bl_cevap.content_version
 }
 
 resource "terratowns_home" "home_bl_cevap" {
@@ -58,6 +58,5 @@ They are seasoned with various herbs and spices, such as garlic, paprika, and on
 DESCRIPTION
   domain_name     = module.home_bl_cevap_hosting.s3_distribution_domain_name
   town            = "missingo"
-  content_version = 1
+  content_version = var.bl_cevap.content_version
 }
-*/

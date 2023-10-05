@@ -20,14 +20,14 @@ variable "environment" {
 
 variable "half_life" {
   type = object({
-  public_path = string
-  content_version = number
-})
+    public_path     = string
+    content_version = number
+  })
 }
 
 variable "bl_cevap" {
   type = object({
-  public_path = string
-  content_version = number
-})
+    public_path     = string
+    content_version = number
+  })
 }

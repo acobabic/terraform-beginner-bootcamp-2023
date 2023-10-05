@@ -6,5 +6,5 @@ half_life = {
 }
 bl_cevap = {
     content_version = 1
-    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/bl_cevap"
+    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/bl-cevap"
 }
