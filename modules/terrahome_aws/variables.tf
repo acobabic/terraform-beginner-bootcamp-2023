@@ -16,7 +16,51 @@ variable "environment" {
   }
 }
 
-variable "index_html_file_path" {
+variable "half_life" {
+  type = object({
+  public_path = string
+  content_version = number
+})
+}
+
+variable "bl_cevap" {
+  type = object({
+  public_path = string
+  content_version = number
+})
+}
+/*
+variable "half_life_public_path" {
+  type = string
+  description = "Path for half life public directory"
+}
+
+variable "bl_cevap_public_path" {
+  type = string
+  description = "Path for bl cevap public directory"
+}
+
+variable "half_life_content_version" {
+  type        = number
+  description = "Content version (positive integer starting from 1)"
+
+    validation {
+    condition     = can(regex("^([1-9]\\d*)$", var.half_life_content_version))
+    error_message = "Content version must be a positive integer starting from 1."
+  }
+}
+
+variable "bl_cevap_content_version" {
+  type        = number
+  description = "Content version (positive integer starting from 1)"
+
+    validation {
+    condition     = can(regex("^([1-9]\\d*)$", var.bl_cevap_content_version))
+    error_message = "Content version must be a positive integer starting from 1."
+  }
+}
+*/
+/*variable "index_html_file_path" {
   type        = string
   description = "Full path to our Static Website index.html page"
   validation {
@@ -38,14 +82,4 @@ variable "assets_path" {
   type        = string
   description = "Full path to our assets folder"
 }
-
-
-variable "content_version" {
-  type        = number
-  description = "Content version (positive integer starting from 1)"
-
-  validation {
-    condition     = can(regex("^([1-9]\\d*)$", var.content_version))
-    error_message = "Content version must be a positive integer starting from 1."
-  }
-}
+*/

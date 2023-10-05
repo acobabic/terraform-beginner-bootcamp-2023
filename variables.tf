@@ -18,22 +18,16 @@ variable "environment" {
   description = "Environment for the resource"
 }
 
-variable "index_html_file_path" {
-  type        = string
-  description = "Full path to our Static Website index.html page"
+variable "half_life" {
+  type = object({
+  public_path = string
+  content_version = number
+})
 }
 
-variable "error_html_file_path" {
-  type        = string
-  description = "Full path to our Static Website error.html page"
-}
-
-variable "assets_path" {
-  type        = string
-  description = "Full path to our assets folder"
-}
-
-variable "content_version" {
-  type        = number
-  description = "Content version (positive integer starting from 1)"
+variable "bl_cevap" {
+  type = object({
+  public_path = string
+  content_version = number
+})
 }
