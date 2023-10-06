@@ -1,5 +1,17 @@
 # Terraform Beginner Bootcamp 2023 - Week 2
 
+- [Working with Ruby](#working-with-ruby)
+  * [Bundler](#bundler)
+    + [Install Gems](#install-gems)
+    + [Executing ruby scripts in the context of bundler](#executing-ruby-scripts-in-the-context-of-bundler)
+  * [Sinatra](#sinatra)
+- [Terratowns Mock Server](#terratowns-mock-server)
+  * [Running the web server](#running-the-web-server)
+- [Terraform Custom Provider (terratowns)](#terraform-custom-provider--terratowns-)
+  * [CRUD](#crud)
+- [Git Tip](#git-tip)
+
+
 ## Working with Ruby
 
 ### Bundler
@@ -68,3 +80,19 @@ More information on Terraform Providers and how to make them can be found on lin
 Terraform providers utilize CRUD (create read update delete)
 
 [About CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+
+## Git Tip
+
+In case where work needs to be done on a specific feature branch that is behind main and to avoid merge conflicts we need to pull the latest from main, merge main into our feature branch before we commit and push changes from feature branch.
+
+I ususally do this by executing following commands:
+
+```sh
+git checkout feat_branch
+git fetch
+git checkout main
+git pull
+git checkout feat_branch
+git merge main
+```
+

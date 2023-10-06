@@ -36,7 +36,7 @@ resource "terratowns_home" "home_half_life" {
 I love Half Life game. It is my first PC game ever and I consider it as my first gamers love :D
 DESCRIPTION
   domain_name     = module.home_half_life_hosting.s3_distribution_domain_name
-  town            = "missingo"
+  town            = "gamers-grotto"
   content_version = var.half_life.content_version
 }
 
@@ -57,6 +57,6 @@ Banjalucki cevap refers to a regional variation of the popular Balkan dish known
 They are seasoned with various herbs and spices, such as garlic, paprika, and onion, giving them a flavorful and savory taste.
 DESCRIPTION
   domain_name     = module.home_bl_cevap_hosting.s3_distribution_domain_name
-  town            = "missingo"
+  town            = "cooker-cove"
   content_version = var.bl_cevap.content_version
 }
