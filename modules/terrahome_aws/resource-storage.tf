@@ -32,37 +32,37 @@ resource "aws_s3_bucket_website_configuration" "website_configuration" {
 resource "aws_s3_object" "website_index" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
-  source = var.index_html_file_path
+  source = "${var.public_path}/index.html"
   content_type = "text/html"
-  etag = filemd5(var.index_html_file_path)
+  etag = filemd5("${var.public_path}/index.html")
 
   lifecycle {
     replace_triggered_by = [ terraform_data.content_version.output ]
     ignore_changes = [ etag ]
   }
 }
-
-resource "aws_s3_object" "upload_assets" {
-  for_each = fileset(var.assets_path, "*.{jpg,jpeg,png,gif}")
-  bucket = aws_s3_bucket.website_bucket.bucket
-  key    = "assets/${each.key}"
-  source = "${var.assets_path}/${each.key}"
-  etag = filemd5("${var.assets_path}/${each.key}")
-
-  lifecycle {
-    replace_triggered_by = [ terraform_data.content_version.output ]
-    ignore_changes = [ etag ]
-  }
-
-}
-
 
 resource "aws_s3_object" "website_error" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "error.html"
-  source = var.error_html_file_path
+  source = "${var.public_path}/error.html"
   content_type = "text/html"
-  etag = filemd5(var.error_html_file_path)
+  etag = filemd5("${var.public_path}/error.html")
+}
+
+
+resource "aws_s3_object" "upload_assets" {
+  for_each = fileset("${var.public_path}/assets/", "*.{jpg,jpeg,png,gif}")
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "assets/${each.key}"
+  source = "${var.public_path}/assets/${each.key}"
+  etag = filemd5("${var.public_path}/assets/${each.key}")
+
+  lifecycle {
+    replace_triggered_by = [ terraform_data.content_version.output ]
+    ignore_changes = [ etag ]
+  }
+
 }
 
 # https://developer.hashicorp.com/terraform/language/resources/terraform-data
